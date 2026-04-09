@@ -65,18 +65,15 @@ export default function MapCanvas() {
 
         if (isOuter) {
           if (st === 'disponible') path.style.fill = '#C0B391';
-          else if (st === 'bloqueada' || st === 'no disponible') path.style.fill = '#C4C0C0';
-          else if (st === 'vendido' || st === 'vendida' || st === 'vendidas' || st === 'reservada') path.style.fill = '#7D7D7D';
+          else path.style.fill = '#8f8f8f';
         } 
         else if (isInner) {
           if (st === 'disponible') path.style.fill = '#E2D6BE';
-          else if (st === 'bloqueada' || st === 'no disponible') path.style.fill = '#E4E4E4';
-          else path.style.fill = '#969494';
+          else path.style.fill = '#636363';
         } 
         else if (isNumber) {
-          if (st === 'bloqueada' || st === 'no disponible') path.style.fill = '#3F3F40'; 
-          else if (st === 'vendido' || st === 'vendida' || st === 'vendidas' || st === 'reservada') path.style.fill = '#FFFFFF'; 
-          else path.style.fill = '#3F3F40';
+          if (st === 'disponible') path.style.fill = '#3F3F40';
+          else path.style.fill = '#FFFFFF';
         }
 
         // Selection border: inside stroke via clipPath

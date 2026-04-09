@@ -15,14 +15,10 @@ export default function BottomMenu() {
             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full bg-[#E2D6BE] shrink-0"></div>
             <span className="text-[9px] sm:text-[10px] md:text-[11px] font-bold text-[#49494a] tracking-wider leading-none">DISPONIBLE</span>
           </div>
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full bg-[#969494] shrink-0"></div>
-            <span className="text-[9px] sm:text-[10px] md:text-[11px] font-bold text-[#49494a] tracking-wider leading-none">VENDIDA</span>
-          </div>
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full bg-[#C4C0C0] shrink-0"></div>
-            <span className="text-[9px] sm:text-[10px] md:text-[11px] font-bold text-[#49494a] tracking-wider leading-none">NO DISPONIBLE</span>
-          </div>
+<div className="flex items-center gap-1.5 sm:gap-2">
+             <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-4 md:h-4 rounded-full bg-[#8f8f8f] shrink-0"></div>
+             <span className="text-[9px] sm:text-[10px] md:text-[11px] font-bold text-[#49494a] tracking-wider leading-none">NO DISPONIBLE</span>
+           </div>
        </div>
 
        {/* Zoom + Logo */}
