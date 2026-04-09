@@ -10,7 +10,7 @@ export default function Tutorial() {
     <div className="w-full h-screen flex flex-col bg-white overflow-y-auto overflow-x-hidden text-center text-white font-nexa">
       {/* Top Header Logo Area */}
       <div className="py-4 sm:py-6 md:py-10 flex shrink-0 items-center justify-center">
-        <Logo width="w-24" className="sm:hidden" />
+        <Logo width="w-28" className="sm:hidden" />
         <Logo width="w-28" className="hidden sm:block md:hidden" />
         <Logo width="w-40" className="hidden md:block" />
       </div>
@@ -20,15 +20,15 @@ export default function Tutorial() {
         <h2 className="text-xl sm:text-2xl md:text-4xl font-bold font-cocomat">¿Cómo funciona?</h2>
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-12 items-center justify-center">
           <div className="flex flex-col items-center gap-1 md:gap-4">
-            <img src="/tutorial_mover.svg" alt="Arrastra" className="w-8 h-8 sm:w-8 sm:h-8 md:w-12 md:h-12" />
+            <img src="/tutorial_mover.svg" alt="Arrastra" className="w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12" />
             <p className="text-xs md:text-xl"><span className="font-bold">Arrastra</span><br/>para moverte por el mapa.</p>
           </div>
           <div className="flex flex-col items-center gap-1 md:gap-4">
-            <img src="/tutorial_clic.svg" alt="Toca un lote" className="w-8 h-8 sm:w-8 sm:h-8 md:w-12 md:h-12" />
+            <img src="/tutorial_clic.svg" alt="Toca un lote" className="w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12" />
             <p className="text-xs md:text-xl"><span className="font-bold">Toca un lote</span><br/>para ver su información.</p>
           </div>
           <div className="flex flex-col items-center gap-1 md:gap-4">
-            <img src="/tutorial_zoom.svg" alt="Zoom" className="w-8 h-8 sm:w-8 sm:h-8 md:w-12 md:h-12" />
+            <img src="/tutorial_zoom.svg" alt="Zoom" className="w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12" />
             <p className="text-xs md:text-xl"><span className="font-bold">Ajusta el zoom</span><br/>utilizando la rueda del mouse.</p>
           </div>
         </div>
