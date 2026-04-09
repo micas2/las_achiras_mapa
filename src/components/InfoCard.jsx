@@ -69,11 +69,7 @@ export default function InfoCard({ isDesktop = false }) {
                  <span className="font-nexa font-bold text-[10px] text-[#49494a] tracking-[0.2px] whitespace-nowrap uppercase">DISPONIBLE</span>
               </div>
               <div className="flex items-center gap-2">
-                 <div className="w-2.5 h-2.5 rounded-full bg-[#969494]" />
-                 <span className="font-nexa font-bold text-[10px] text-[#49494a] tracking-[0.2px] whitespace-nowrap uppercase">VENDIDA</span>
-              </div>
-              <div className="flex items-center gap-2">
-                 <div className="w-2.5 h-2.5 rounded-full bg-[#C4C0C0]" />
+                 <div className="w-2.5 h-2.5 rounded-full bg-[#8f8f8f]" />
                  <span className="font-nexa font-bold text-[10px] text-[#49494a] tracking-[0.2px] whitespace-nowrap uppercase">NO DISPONIBLE</span>
               </div>
             </div>
