@@ -77,24 +77,24 @@ export default function MapScreen({ deviceView = 'desktop' }) {
             </div>
           )}
         </TransformWrapper>
+
+        {/* InfoCard - Desktop */}
+        {selectedLotId && deviceView === 'desktop' && (
+          <div className="absolute z-50 pointer-events-none bottom-0 left-0 w-full">
+            <InfoCard isDesktop={true} />
+          </div>
+        )}
+
+        {/* InfoCard - Mobile/Tablet */}
+        {selectedLotId && deviceView !== 'desktop' && (
+          <div className="absolute z-50 pointer-events-none bottom-[70px] left-0">
+            <InfoCard isDesktop={false} />
+          </div>
+        )}
       </div>
 
-      {/* InfoCard - Desktop */}
-      {selectedLotId && deviceView === 'desktop' && (
-        <div className="absolute z-50 pointer-events-none bottom-0 left-0 w-full">
-          <InfoCard isDesktop={true} />
-        </div>
-      )}
-
-      {/* InfoCard - Mobile/Tablet */}
-      {selectedLotId && deviceView !== 'desktop' && (
-        <div className="absolute z-50 pointer-events-none bottom-[70px] left-0">
-          <InfoCard isDesktop={false} />
-        </div>
-      )}
-
       {/* Bottom Menu */}
-      <div className={`relative z-50 ${selectedLotId && deviceView === 'desktop' ? 'hidden lg:hidden' : ''}`}>
+      <div className={`relative z-50 ${selectedLotId ? 'hidden lg:block' : ''}`}>
         <BottomMenu />
       </div>
     </div>
