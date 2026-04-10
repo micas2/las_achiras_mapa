@@ -103,8 +103,8 @@ export default function MapScreen({ deviceView = 'desktop' }) {
 
       {/* InfoCard Desktop - tapa el menú */}
       {selectedLotId && deviceView === 'desktop' && (
-        <div className="absolute z-[100] left-0 w-full pointer-events-none bottom-0">
-          <div className="pointer-events-auto">
+        <div className="absolute inset-0 pointer-events-none flex items-end">
+          <div className="pointer-events-auto w-full z-[200]">
             <InfoCard isDesktop={true} />
           </div>
         </div>
