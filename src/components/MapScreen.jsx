@@ -48,9 +48,9 @@ export default function MapScreen({ deviceView = 'desktop' }) {
   }, []);
 
   return (
-    <div className="w-full h-screen bg-[#D8E2E1] flex flex-col">
-      {/* Contenedor del mapa - usa calc() para adaptarse */}
-      <div className="w-full h-[calc(100vh-80px)] sm:h-[calc(100vh-90px)] lg:h-[calc(100vh-100px)]">
+    <div className="w-full h-screen bg-[#D8E2E1] overflow-hidden flex flex-col">
+      {/* Contenedor del mapa - altura fija basada en altura del menú */}
+      <div className="flex-1 min-h-0 overflow-hidden">
         <TransformWrapper
           ref={transformRef}
           initialScale={1}
@@ -59,24 +59,26 @@ export default function MapScreen({ deviceView = 'desktop' }) {
           centerOnInit={true}
           limitToBounds={false}
         >
-          <MapCanvas />
-          
-          {/* Loading overlay */}
-          {loading && (
-            <div className="absolute inset-0 bg-[#D8E2E1]/80 flex items-center justify-center z-40">
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-10 h-10 border-4 border-azul4 border-t-transparent rounded-full animate-spin" />
-                <span className="text-azul4 font-nexa font-bold text-sm tracking-wider">CARGANDO LOTES...</span>
+          <div className="w-full h-full overflow-hidden">
+            <MapCanvas />
+            
+            {/* Loading overlay */}
+            {loading && (
+              <div className="absolute inset-0 bg-[#D8E2E1]/80 flex items-center justify-center z-40">
+                <div className="flex flex-col items-center gap-3">
+                  <div className="w-10 h-10 border-4 border-azul4 border-t-transparent rounded-full animate-spin" />
+                  <span className="text-azul4 font-nexa font-bold text-sm tracking-wider">CARGANDO LOTES...</span>
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Error message */}
-          {error && !loading && (
-            <div className="absolute top-4 left-4 right-4 bg-red-50 border border-red-200 rounded-lg px-4 py-3 z-40">
-              <p className="text-red-700 text-sm font-nexa text-center">{error}</p>
-            </div>
-          )}
+            {/* Error message */}
+            {error && !loading && (
+              <div className="absolute top-4 left-4 right-4 bg-red-50 border border-red-200 rounded-lg px-4 py-3 z-40">
+                <p className="text-red-700 text-sm font-nexa text-center">{error}</p>
+              </div>
+            )}
+          </div>
 
           {/* Floating UI - Desktop */}
           {selectedLotId && deviceView === 'desktop' && (
@@ -94,8 +96,8 @@ export default function MapScreen({ deviceView = 'desktop' }) {
         </TransformWrapper>
       </div>
 
-      {/* Bottom Menu - siempre visible cuando no hay InfoCard en desktop */}
-      <div className={`${selectedLotId && deviceView === 'desktop' ? 'hidden lg:block' : ''}`}>
+      {/* Bottom Menu - siempre visible */}
+      <div className="shrink-0">
         <BottomMenu />
       </div>
     </div>
