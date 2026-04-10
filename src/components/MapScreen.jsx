@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { TransformWrapper } from 'react-zoom-pan-pinch';
 import { useStore } from '../store/useStore';
 import MapCanvas from './MapCanvas';
@@ -10,15 +10,31 @@ export default function MapScreen({ deviceView = 'desktop' }) {
   const fetchLotsData = useStore(state => state.fetchLotsData);
   const loading = useStore(state => state.loading);
   const error = useStore(state => state.error);
+  const transformRef = useRef(null);
+  const [lastSize, setLastSize] = useState(window.innerWidth);
 
   useEffect(() => {
     fetchLotsData();
   }, [fetchLotsData]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const currentSize = window.innerWidth;
+      if (lastSize !== currentSize && transformRef.current) {
+        transformRef.current.resetTransform();
+      }
+      setLastSize(currentSize);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [lastSize]);
+
   return (
     <div className="w-full h-screen bg-[#D8E2E1] flex justify-center overflow-hidden">
       <div className="relative w-full h-full flex flex-col transition-all duration-700 ease-in-out">
         <TransformWrapper
+          ref={transformRef}
           initialScale={1}
           minScale={0.1}
           maxScale={5}
