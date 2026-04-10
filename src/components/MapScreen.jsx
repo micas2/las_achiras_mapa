@@ -103,7 +103,7 @@ export default function MapScreen({ deviceView = 'desktop' }) {
 
       {/* InfoCard Desktop - tapa el menú */}
       {selectedLotId && deviceView === 'desktop' && (
-        <div className="absolute z-50 left-0 w-full pointer-events-none bottom-0">
+        <div className="absolute z-[100] left-0 w-full pointer-events-none bottom-0">
           <div className="pointer-events-auto">
             <InfoCard isDesktop={true} />
           </div>
@@ -120,7 +120,7 @@ export default function MapScreen({ deviceView = 'desktop' }) {
       )}
 
       {/* Bottom Menu - fijo debajo */}
-      <div className="shrink-0 z-50">
+      <div className="shrink-0 z-40">
         <BottomMenu 
           onZoomIn={() => zoomControlsRef.current.zoomIn?.()} 
           onZoomOut={() => zoomControlsRef.current.zoomOut?.()} 
