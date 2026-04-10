@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { TransformWrapper } from 'react-zoom-pan-pinch';
 import { useStore } from '../store/useStore';
 import MapCanvas from './MapCanvas';
@@ -11,7 +11,7 @@ export default function MapScreen({ deviceView = 'desktop' }) {
   const loading = useStore(state => state.loading);
   const error = useStore(state => state.error);
   const transformRef = useRef(null);
-  const [lastSize, setLastSize] = useState(window.innerWidth);
+  const resizeTimeoutRef = useRef(null);
 
   useEffect(() => {
     fetchLotsData();
@@ -19,16 +19,33 @@ export default function MapScreen({ deviceView = 'desktop' }) {
 
   useEffect(() => {
     const handleResize = () => {
-      const currentSize = window.innerWidth;
-      if (lastSize !== currentSize && transformRef.current) {
-        transformRef.current.resetTransform();
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
       }
-      setLastSize(currentSize);
+      
+      resizeTimeoutRef.current = setTimeout(() => {
+        if (transformRef.current) {
+          const { state } = transformRef.current;
+          const containerCenterX = window.innerWidth / 2;
+          const containerCenterY = window.innerHeight / 2;
+          
+          transformRef.current.setTransform(
+            state.scale,
+            containerCenterX - 1500 * state.scale,
+            containerCenterY - 1500 * state.scale
+          );
+        }
+      }, 300);
     };
 
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [lastSize]);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="w-full h-screen bg-[#D8E2E1] flex justify-center overflow-hidden">
